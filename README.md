@@ -9,6 +9,11 @@
 
 ## git 问题
 
+- 使用代理配置 github 加快速度
+  - https://zhuanlan.zhihu.com/p/481574024
+
+---
+
 - fatal: unable to access 'https://github.com/xxxxx.git/': OpenSSL SSL_read: Connection was reset, errno 10054
   - git config --global http.sslVerify "false" (不知道具体有没有效果，个人觉得没用)
 
