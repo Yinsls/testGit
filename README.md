@@ -19,3 +19,7 @@
   - 解决: git cherry-pick --abort (取消上次 cherry-pick 操作)
 
 ---
+
+- CONFLICT (content): Merge conflict in master.js; Automatic merge failed; fix conflicts and then commit the result.
+  - 原因: 文件合并产生了冲突
+  - 解决: 解决文件冲突后重新 git add, git commit , git push
