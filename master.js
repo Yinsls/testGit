@@ -1,4 +1,6 @@
-const name = "master";
+const obj = {
+  name: "master",
+};
 export const say = () => {
-  console.log(name);
+  console.log(obj.name);
 };
