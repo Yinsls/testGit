@@ -15,6 +15,11 @@
 
 ## git 问题
 
+- 使用代理配置 github 加快速度
+  - https://zhuanlan.zhihu.com/p/481574024
+
+---
+
 - fatal: unable to access 'https://github.com/xxxxx.git/': OpenSSL SSL_read: Connection was reset, errno 10054
   - git config --global http.sslVerify "false" (不知道具体有没有效果，个人觉得没用)
 
@@ -29,3 +34,9 @@
 - CONFLICT (content): Merge conflict in master.js; Automatic merge failed; fix conflicts and then commit the result.
   - 原因: 文件合并产生了冲突
   - 解决: 解决文件冲突后重新 git add, git commit , git push
+
+---
+
+- error: commit 39d7e28a4e5819ef2425b17b6c5695f606dcd471 is a merge but no -m option was given. fatal: cherry-pick failed
+  - 原因: cherry-pick 多个 commit 时,不知以哪一个分支为主线
+  - 解决: git cherry-pick -m commitId 【以 commitId 这个提交进行合并】
