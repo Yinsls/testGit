@@ -6,6 +6,12 @@
 
 - 切换分支: #main: git checkout master 【切换到 master 分支】
 - 创建分支: #main: git checkout -b test origin/main 【根据 main 分支创建 test 分支并切换到此分支】
+- 合并分支: #main: git merge master 【将 master 合并到 main】
+- 删除本地分支: #main: git branch -d master 【删除本地 master 分支】【git branch -D master: 强制删除】
+- 删除远程分支: #main: git push origin --delete master
+- 拉取指定分支到本地: #main: git checkout -b master origin/master 【本地创建 master 分支并与远程 master 关联】
+- 拉取远程分支到本地: git fetch
+- 选择某 commit 合并: git cherry-pick commitId
 
 ## git 问题
 
