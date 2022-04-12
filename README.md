@@ -1,6 +1,32 @@
 # testGit
 
-练习 git 操作
+## window安装nvm
+- 已安装nodejs情况下(npm安装) 【若使用程序安装，安装过程中弹框显示是否关联本地node,选择是即可】
+  - cmd: npm install nvm -g
+  - cmd: nvm -V   // 查看nvm是否安装成功
+  - cmd: nvm list   // 查看nvm下已安装的node版本
+  - cmd: nvm list available   // 查看可安装的node版本
+  - cmd: nvm install 14.18.2  // nvm安装14.18.2版本node
+  - cmd: nvm use 14.18.2    // nvm使用14.18.2版本的node
+  - cmd: node -v  // 此时的node版本14.18.2
+
+- 安装包安装nvm 【若使用程序安装，安装过程中弹框显示是否关联本地node,选择是即可】
+  - https://github.com/coreybutler/nvm-windows/releases     // 下载安装包nvm-setup.zip【安装包安装可自动配置环境变量】
+  - 选择安装位置与node的位置  【本人选择node安装位置后，文件夹不知缘由不见了，不过不影响】
+  - 安装完毕 设置淘宝源
+    - nvm => setting.txt添加如下两行设置
+    - node_mirror: https://npm.taobao.org/mirrors/node/
+    - npm_mirror: https://npm.taobao.org/mirrors/npm/
+  - cmd: nvm -V   // 查看nvm是否安装成功
+  - cmd: nvm list   // 查看nvm下已安装的node版本
+  - cmd: nvm list available   // 查看可安装的node版本
+  - cmd: nvm install 14.18.2  // nvm安装14.18.2版本node
+  - cmd: nvm use 14.18.2    // nvm使用14.18.2版本的node
+  - cmd: node -v  // 此时的node版本14.18.2
+- 安装完成后可能遇到的问题
+  - nvm install正常，但nvm use xxx报错，并且node命令找不到  【可尝试管理员身份运行cmd】
+  - nvm安装node后npm无法使用  【原因可能是setting.txt未设置淘宝源，node中npm未下载导致】
+
 
 ## git 命令
 
@@ -13,6 +39,14 @@
 - 拉取指定分支到本地: #main: git checkout -b master origin/master 【本地创建 master 分支并与远程 master 关联】
 - 拉取远程分支到本地: git fetch
 - 选择某 commit 合并: git cherry-pick commitId
+- git stash【缓存】
+  - git stash save "描述内容" // 缓存编辑内容
+  - git stash pop // 将第一个stash拉出存储栈
+  - git stash pop "$stash{1}" // 将第二个stash拉出存储栈，并从栈中删除
+  - git stash apply "$stash{1}" // 复制第二个stash到文件中，并不将其从stash栈删除
+  - git stash drop "$stash{1}"  // 删除存储栈中的第二个stash
+
+
 
 ## git 问题
 
