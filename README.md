@@ -1,32 +1,59 @@
 # testGit
 
-## window安装nvm
-- 已安装nodejs情况下(npm安装) 【若使用程序安装，安装过程中弹框显示是否关联本地node,选择是即可】
-  - cmd: npm install nvm -g
-  - cmd: nvm -V   // 查看nvm是否安装成功
-  - cmd: nvm list   // 查看nvm下已安装的node版本
-  - cmd: nvm list available   // 查看可安装的node版本
-  - cmd: nvm install 14.18.2  // nvm安装14.18.2版本node
-  - cmd: nvm use 14.18.2    // nvm使用14.18.2版本的node
-  - cmd: node -v  // 此时的node版本14.18.2
+## 将本地项目上传到 github
 
-- 安装包安装nvm 【若使用程序安装，安装过程中弹框显示是否关联本地node,选择是即可】
-  - https://github.com/coreybutler/nvm-windows/releases     // 下载安装包nvm-setup.zip【安装包安装可自动配置环境变量】
-  - 选择安装位置与node的位置  【本人选择node安装位置后，文件夹不知缘由不见了，不过不影响】
+- $ git init // 项目中初始化 git 仓库
+- $ git add . // 添加项目到暂存区
+- $ git commit -m "init Project" // 将项目提交到本地 git 仓库
+- $ git remote add origin git@github.com:xxx/xxxx.git // 将本地仓库与远程仓库关联
+- $ git branch -M main // 设置分支名
+- $ git push -u origin main // 将本地仓库内容提交到远程仓库(初次上传时可不需要 git pull)
+- 若出现报错: git@github.com: Permission denied (publickey). // github 秘钥缺失
+- ssh -T git@github.com (检测是否存在秘钥)
+  - Permission denied(publickey) // 未关联本机与 github(秘钥不存在了)
+  - ssh-keygen -t rsa -C "xxx@xx.com" // 本地生成公钥(出现的几个选项都 enter 就好)(github 绑定的邮箱,如: 22342453@qq.com) (出现(已成功生成): Your public key has been saved in /c/Users/28263/.ssh/id_rsa.pub)
+  - cat /c/Users/28263/.ssh/id_rsa.pub // 显示 id_rsa.pub 文件内容(cat 在 git 命令行中可用,也可以到文件夹中去找对应的文件)
+  - 复制 id_rsa.pub 内容
+  - 打开 github,点击头像下拉中的 Settings
+  - 选择 SSH and GPG keys
+  - 点击 New SSH key 按钮
+  - 输入 Title(随意皆可，只是用来给自己标记命名，若存在多个电脑时可用来分辨秘钥情况)
+  - 将 id_rsa.pub 内容粘贴到 Key 中
+  - 输入完毕后点击 Add SSH key，SSH keys 列表即出现一条刚添加的 ssh 秘钥，添加成功
+- 秘钥添加完成后继续提交仓库: git push -u origin main
+- 若失败:
+  - error: failed to push some refs to 'git@github.com.....git --- 后续中出现'git pull ...' before pushing again.
+  - $ git pull --rebase origin main // 上述报错可能是 github 中存在 md 文件，本地不存在，所以需要先 pull
+  - $ git push origin main // 上传仓库，ok,嗯，应该成功了吧!
+
+## window 安装 nvm
+
+- 已安装 nodejs 情况下(npm 安装) 【若使用程序安装，安装过程中弹框显示是否关联本地 node,选择是即可】
+
+  - cmd: npm install nvm -g
+  - cmd: nvm -V // 查看 nvm 是否安装成功
+  - cmd: nvm list // 查看 nvm 下已安装的 node 版本
+  - cmd: nvm list available // 查看可安装的 node 版本
+  - cmd: nvm install 14.18.2 // nvm 安装 14.18.2 版本 node
+  - cmd: nvm use 14.18.2 // nvm 使用 14.18.2 版本的 node
+  - cmd: node -v // 此时的 node 版本 14.18.2
+
+- 安装包安装 nvm 【若使用程序安装，安装过程中弹框显示是否关联本地 node,选择是即可】
+  - https://github.com/coreybutler/nvm-windows/releases // 下载安装包 nvm-setup.zip【安装包安装可自动配置环境变量】
+  - 选择安装位置与 node 的位置 【本人选择 node 安装位置后，文件夹不知缘由不见了，不过不影响】
   - 安装完毕 设置淘宝源
-    - nvm => setting.txt添加如下两行设置
+    - nvm => setting.txt 添加如下两行设置
     - node_mirror: https://npm.taobao.org/mirrors/node/
     - npm_mirror: https://npm.taobao.org/mirrors/npm/
-  - cmd: nvm -V   // 查看nvm是否安装成功
-  - cmd: nvm list   // 查看nvm下已安装的node版本
-  - cmd: nvm list available   // 查看可安装的node版本
-  - cmd: nvm install 14.18.2  // nvm安装14.18.2版本node
-  - cmd: nvm use 14.18.2    // nvm使用14.18.2版本的node
-  - cmd: node -v  // 此时的node版本14.18.2
+  - cmd: nvm -V // 查看 nvm 是否安装成功
+  - cmd: nvm list // 查看 nvm 下已安装的 node 版本
+  - cmd: nvm list available // 查看可安装的 node 版本
+  - cmd: nvm install 14.18.2 // nvm 安装 14.18.2 版本 node
+  - cmd: nvm use 14.18.2 // nvm 使用 14.18.2 版本的 node
+  - cmd: node -v // 此时的 node 版本 14.18.2
 - 安装完成后可能遇到的问题
-  - nvm install正常，但nvm use xxx报错，并且node命令找不到  【可尝试管理员身份运行cmd】
-  - nvm安装node后npm无法使用  【原因可能是setting.txt未设置淘宝源，node中npm未下载导致】
-
+  - nvm install 正常，但 nvm use xxx 报错，并且 node 命令找不到 【可尝试管理员身份运行 cmd】
+  - nvm 安装 node 后 npm 无法使用 【原因可能是 setting.txt 未设置淘宝源，node 中 npm 未下载导致】
 
 ## git 命令
 
@@ -41,12 +68,10 @@
 - 选择某 commit 合并: git cherry-pick commitId
 - git stash【缓存】
   - git stash save "描述内容" // 缓存编辑内容
-  - git stash pop // 将第一个stash拉出存储栈
-  - git stash pop "$stash{1}" // 将第二个stash拉出存储栈，并从栈中删除
-  - git stash apply "$stash{1}" // 复制第二个stash到文件中，并不将其从stash栈删除
-  - git stash drop "$stash{1}"  // 删除存储栈中的第二个stash
-
-
+  - git stash pop // 将第一个 stash 拉出存储栈
+  - git stash pop "$stash{1}" // 将第二个 stash 拉出存储栈，并从栈中删除
+  - git stash apply "$stash{1}" // 复制第二个 stash 到文件中，并不将其从 stash 栈删除
+  - git stash drop "$stash{1}" // 删除存储栈中的第二个 stash
 
 ## git 问题
 
